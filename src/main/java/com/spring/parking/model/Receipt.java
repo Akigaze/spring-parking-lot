@@ -1,8 +1,10 @@
 package com.spring.parking.model;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Objects;
 import java.util.UUID;
-
+@Service
 public class Receipt {
 
         private String id;

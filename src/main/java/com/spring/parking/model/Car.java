@@ -1,5 +1,8 @@
 package com.spring.parking.model;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Car {
     private int id;
     public Car(){
