@@ -1,5 +1,6 @@
 package com.spring.parking.service;
 
+import com.spring.parking.db.DataBase;
 import com.spring.parking.model.ParkingBoy;
 import com.spring.parking.model.ParkingLot;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,11 @@ public class ParkingLotService {
 
     private List<ParkingLot> parkingLotList=new ArrayList<>();
     private List<ParkingBoy> boyList=new ArrayList<>();
+
+    {
+        parkingLotList=DataBase.getParkingLotList();
+        boyList=DataBase.getBoyList();
+    }
 
     public ParkingLotService() {
     }
@@ -48,6 +54,7 @@ public class ParkingLotService {
         boyList.add(newer);
         return newer;
     }
+
 
     public void assignParkingLotToParkingBoy(int boyID, int lotID) {
         ParkingLot lot=parkingLotList.stream().filter(l->l.getId()==lotID).findFirst().get();
