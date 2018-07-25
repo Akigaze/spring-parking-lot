@@ -2,6 +2,7 @@ package com.spring.parking.model;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class ParkingLot {
     private int id;
     private String name;
     private int capacity;
-    private List<Car> cars;
+    private List<Car> cars=new ArrayList<>();
 
     public ParkingLot() {
     }
