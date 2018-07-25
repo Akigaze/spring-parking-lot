@@ -19,7 +19,7 @@ public class DataBase {
 
         ParkingBoy tom=new ParkingBoy(2,"Tom");
         ParkingLot lot3=new ParkingLot(3,"北门停车场",3);
-        ParkingLot lot4=new ParkingLot(4,"南停车场",3);
+        ParkingLot lot4=new ParkingLot(4,"南门停车场",3);
 
         List<ParkingLot> jackParkingLot=new ArrayList<>();
         jackParkingLot.add(lot1);

@@ -44,11 +44,7 @@ public class ParkingLotController {
     }
 
     @PostMapping("/parkingboys/{boyID}/parkinglots")
-    public void assignParkingLotToParkingBoy(@RequestParam(defaultValue="0") int id,@PathVariable int boyID,@RequestBody ParkingLot lot){
-        int lotID=id;
-        if (id==0&&lot.getId()!=0){
-            lotID=lot.getId();
-        }
-        service.assignParkingLotToParkingBoy(boyID,lotID);
+    public void assignParkingLotToParkingBoy(@PathVariable int boyID,@RequestBody ParkingLot lot){
+        service.assignParkingLotToParkingBoy(boyID,lot.getId());
     }
 }
