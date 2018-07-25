@@ -134,4 +134,13 @@ public class ParkingLotService {
         }
         return order;
     }
+
+    public Car processReceipt(String id) {
+        for (ParkingLot lot:DataBase.getParkingLotList()){
+            if (lot.containsReceipt(id)){
+                return lot.unpark(new Receipt(id));
+            }
+        }
+        return null;
+    }
 }

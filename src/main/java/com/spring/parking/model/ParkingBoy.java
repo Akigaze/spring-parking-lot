@@ -60,7 +60,7 @@ public class ParkingBoy {
 
     public Car unPark(Receipt card){
         for (ParkingLot lot:parkingLots){
-            if(lot.containsReceipt(card)){
+            if(lot.containsReceipt(card.getId())){
                 return lot.unpark(card);
             }
         }

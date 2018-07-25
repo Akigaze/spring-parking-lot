@@ -75,4 +75,9 @@ public class ParkingLotController {
     public boolean processOrder(@PathVariable int boyID,@RequestBody Order order){
         return service.processOrderByParkingBoy(boyID,order);
     }
+
+    @GetMapping("/receipts/{id}")
+    public Car pickUpCar(@PathVariable String id){
+        return service.processReceipt(id);
+    }
 }

@@ -86,11 +86,9 @@ public class ParkingLot {
         return cars.size()==capacity;
     }
 
-    public boolean containsReceipt(Receipt card){
-        return cars.containsKey(card);
+    public boolean containsReceipt(String receiptId){
+        return cars.containsKey(new Receipt(receiptId));
     }
-
-
 
     @Override
     public boolean equals(Object o) {

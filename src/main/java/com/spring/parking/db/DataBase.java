@@ -40,6 +40,10 @@ public class DataBase {
         orderList.add(new Order(1,new Car(12345),new Receipt("receipt: 23456")));
         orderList.add(new Order(2,new Car(33333),new Receipt("receipt: 00909")));
 
+        Car car=new Car(9003);
+        Receipt receipt=new Receipt("0000000");
+
+        lot4.park(car,receipt);
     }
 
 
