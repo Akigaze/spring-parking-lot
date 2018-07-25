@@ -74,4 +74,15 @@ public class ParkingLotService {
         }
         return boy;
     }
+
+    public ParkingLot getParkingLotById(int id) {
+        ParkingLot lot=null;
+        for (ParkingLot l:parkingLotList){
+            if (l.getId()==id){
+                lot=l;
+                break;
+            }
+        }
+        return lot;
+    }
 }
