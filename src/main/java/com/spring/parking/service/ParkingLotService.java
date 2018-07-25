@@ -43,4 +43,9 @@ public class ParkingLotService {
         parkingLotList.add(newLot);
         return newLot;
     }
+
+    public ParkingBoy hireParkingBoy(ParkingBoy newer) {
+        boyList.add(newer);
+        return newer;
+    }
 }
