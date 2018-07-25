@@ -12,6 +12,10 @@ public class ParkingBoy {
     private int id;
     private String name;
     private List<ParkingLot> parkingLots=new ArrayList<>();
+
+    public ParkingBoy() {
+    }
+
     public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots=parkingLots;
     }
@@ -21,9 +25,33 @@ public class ParkingBoy {
         this.name=name;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
+    public void setParkingLots(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+    }
+
     public Receipt park(Car car) {
         for (ParkingLot lot:parkingLots){
-            if (!lot.isFull()){
+            if (!lot.full()){
                 return lot.park(car);
             }
         }
@@ -39,24 +67,24 @@ public class ParkingBoy {
         throw new InvalidReceiptException();
     }
 
-    public boolean isAllParkingLotsFull(){
+    public boolean allParkingLotsFull(){
         for (ParkingLot lot:parkingLots){
-            if (!lot.isFull()){
+            if (!lot.full()){
                 return false;
             }
         }
         return true;
     }
 
-    public String getParkingLotsInfo() {
+    public String generateParkingLotsInfo() {
         StringBuffer buffer=new StringBuffer();
         buffer.append("|停车场ID|名称|车位|已停车辆|剩余车位|\n");
         buffer.append("======================================\n");
         parkingLots.forEach(lot->{
-            String id=lot.getFormatId();
+            String id=lot.formatId();
             String name=lot.getName();
             int capacity=lot.getCapacity();
-            int carNum=lot.getCarNum();
+            int carNum=lot.countCarNumber();
             int restSites=capacity-carNum;
             String item=String.format("|%s|%s|%d(个)|%d(辆)|%d(个)|\n",id,name,capacity,carNum,restSites);
             buffer.append(item);
@@ -70,39 +98,9 @@ public class ParkingBoy {
     }
 
     private int countCarNum() {
-        return parkingLots.stream().map(lot->lot.getCarNum()).reduce(0,(total,current)->total+current);
+        return parkingLots.stream().map(lot->lot.countCarNumber()).reduce(0,(total, current)->total+current);
     }
     private int countSiteNum() {
         return parkingLots.stream().map(lot->lot.getCapacity()).reduce(0,(total,current)->total+current);
-    }
-
-    public boolean buildParkingLot(String name, int capacity) {
-        return parkingLots.add(new ParkingLot(parkingLots.size()+1,name,capacity));
-    }
-
-    private ParkingLot getParkingLotById(int id){
-        ParkingLot deleter = null;
-        for (ParkingLot lot:parkingLots){
-            if (lot.getId()==id){
-                deleter=lot;
-                break;
-            }
-        }
-        return deleter;
-    }
-    public boolean deleteParkingLot(int id) {
-        ParkingLot deleter=getParkingLotById(id);
-        if (deleter==null){
-            throw new NotExitParkingLotException();
-        }else {
-            if (!deleter.hasCar()){
-                return parkingLots.remove(deleter);
-            }
-            return false;
-        }
-    }
-
-    public void setParkingLots(List<ParkingLot> parkingLots) {
-        this.parkingLots=parkingLots;
     }
 }

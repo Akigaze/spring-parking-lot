@@ -10,7 +10,27 @@ public class ParkingLot {
     private int id;
     private String name;
     private int capacity;
-    private Map<Receipt,Car> parkedCars=new HashMap<>();
+    private Map<Receipt,Car> cars =new HashMap<>();
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public Map<Receipt, Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Map<Receipt, Car> cars) {
+        this.cars = cars;
+    }
 
     public ParkingLot(){}
 
@@ -32,7 +52,7 @@ public class ParkingLot {
         return id;
     }
 
-    public String getFormatId() {
+    public String formatId() {
         return String.format("%03d",id);
     }
 
@@ -45,14 +65,14 @@ public class ParkingLot {
         return capacity;
     }
 
-    public int getCarNum() {
-        return parkedCars.size();
+    public int countCarNumber() {
+        return cars.size();
     }
 
     public Receipt park(Car car) {
-        if (parkedCars.size()<capacity){
+        if (cars.size()<capacity){
             Receipt card=new Receipt();
-            parkedCars.put(card,car);
+            cars.put(card,car);
             return card;
         }else {
             throw new ParkingLotFullException();
@@ -60,15 +80,15 @@ public class ParkingLot {
     }
 
     public Car unpark(Receipt card) {
-        return parkedCars.remove(card);
+        return cars.remove(card);
     }
 
-    public boolean isFull() {
-        return parkedCars.size()==capacity;
+    public boolean full() {
+        return cars.size()==capacity;
     }
 
     public boolean containsReceipt(Receipt card){
-        return parkedCars.containsKey(card);
+        return cars.containsKey(card);
     }
 
 
@@ -88,6 +108,6 @@ public class ParkingLot {
 
 
     public boolean hasCar() {
-        return getCarNum()>0;
+        return countCarNumber()>0;
     }
 }
