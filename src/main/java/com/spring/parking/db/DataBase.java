@@ -37,6 +37,8 @@ public class DataBase {
         boyList.add(tom);
     }
 
+
+
     public static List<ParkingLot> getParkingLotList() {
         return parkingLotList;
     }
