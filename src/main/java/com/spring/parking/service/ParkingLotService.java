@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ParkingLotService {
@@ -95,5 +96,9 @@ public class ParkingLotService {
 
     public List<Order> getOrderList() {
         return DataBase.getOrderList();
+    }
+
+    public List<Order> getOrderListByStatus(String status) {
+        return DataBase.getOrderList().stream().filter(o->o.getStatus().equals(status)).collect(Collectors.toList());
     }
 }

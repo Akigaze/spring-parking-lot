@@ -13,7 +13,7 @@ public class Order {
     private Car parkedCar;
     @Autowired
     private Receipt receipt;
-    private boolean deal=false;
+    private String status="undeal";
 
     public Order() {
     }
@@ -47,11 +47,11 @@ public class Order {
         this.receipt = receipt;
     }
 
-    public boolean isDeal() {
-        return deal;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDeal(boolean deal) {
-        this.deal = deal;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

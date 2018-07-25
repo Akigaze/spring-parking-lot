@@ -52,8 +52,17 @@ public class ParkingLotController {
         return service.handleParkingRequset(car);
     }
 
+//    @GetMapping("/orders")
+//    public List<Order> getAllOrders(){
+//        return service.getOrderList();
+//    }
+
     @GetMapping("/orders")
-    public List<Order> getAllOrders(){
-        return service.getOrderList();
+    public List<Order> getOrders(@RequestParam(defaultValue = "") String status){
+        if (status.equals("")){
+            return service.getOrderList();
+        }else {
+            return service.getOrderListByStatus(status);
+        }
     }
 }
