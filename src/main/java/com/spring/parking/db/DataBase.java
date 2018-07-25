@@ -1,8 +1,6 @@
 package com.spring.parking.db;
 
-import com.spring.parking.model.Order;
-import com.spring.parking.model.ParkingBoy;
-import com.spring.parking.model.ParkingLot;
+import com.spring.parking.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +36,8 @@ public class DataBase {
         parkingLotList.add(lot4);
         boyList.add(jack);
         boyList.add(tom);
+
+        orderList.add(new Order(new Car(12345),new Receipt("receipt: 23456")));
     }
 
 
@@ -50,7 +50,19 @@ public class DataBase {
         return boyList;
     }
 
+    public static List<Order> getOrderList() {
+        return orderList;
+    }
+
     public static void insertOrder(Order order) {
         orderList.add(order);
+    }
+
+    public static void insertParkingLot(ParkingLot newLot) {
+        parkingLotList.add(newLot);
+    }
+
+    public static void insertParkingBoy(ParkingBoy newer) {
+        boyList.add(newer);
     }
 }

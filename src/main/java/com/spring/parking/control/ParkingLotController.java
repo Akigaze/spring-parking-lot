@@ -1,9 +1,6 @@
 package com.spring.parking.control;
 
-import com.spring.parking.model.Car;
-import com.spring.parking.model.ParkingBoy;
-import com.spring.parking.model.ParkingLot;
-import com.spring.parking.model.Receipt;
+import com.spring.parking.model.*;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +50,10 @@ public class ParkingLotController {
     @PostMapping("/receipts")
     public Receipt parkingCar(@RequestBody Car car){
         return service.handleParkingRequset(car);
+    }
+
+    @GetMapping("/orders")
+    public List<Order> getAllOrders(){
+        return service.getOrderList();
     }
 }
