@@ -4,10 +4,7 @@ import com.spring.parking.model.ParkingBoy;
 import com.spring.parking.model.ParkingLot;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,14 @@ public class ParkingLotController {
     @PostMapping("/parkingboys")
     public ParkingBoy addParkingBoy(@RequestBody ParkingBoy boy){
         return service.hireParkingBoy(boy);
+    }
+
+    @PostMapping("/parkingboys/{boyID}/parkinglots")
+    public void assignParkingLotToParkingBoy(@RequestParam(defaultValue="0") int id,@PathVariable int boyID,@RequestBody ParkingLot lot){
+        int lotID=id;
+        if (id==0&&lot.getId()!=0){
+            lotID=lot.getId();
+        }
+        service.assignParkingLotToParkingBoy(boyID,lotID);
     }
 }
