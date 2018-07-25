@@ -4,14 +4,15 @@ import com.spring.parking.model.ParkingBoy;
 import com.spring.parking.model.ParkingLot;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ParkingLotService {
 
 
-    private List<ParkingLot> parkingLotList;
-    private List<ParkingBoy> boyList;
+    private List<ParkingLot> parkingLotList=new ArrayList<>();
+    private List<ParkingBoy> boyList=new ArrayList<>();
 
     public ParkingLotService() {
     }
@@ -35,5 +36,11 @@ public class ParkingLotService {
 
     public void setBoyList(List<ParkingBoy> boyList) {
         this.boyList = boyList;
+    }
+
+
+    public ParkingLot buildParkingLot(ParkingLot newLot) {
+        parkingLotList.add(newLot);
+        return newLot;
     }
 }
