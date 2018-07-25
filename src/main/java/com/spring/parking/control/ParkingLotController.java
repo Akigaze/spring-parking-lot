@@ -23,6 +23,11 @@ public class ParkingLotController {
         return service.getBoyList();
     }
 
+    @GetMapping("/parkingboys/{id}")
+    public ParkingBoy selectParkingBoy(@PathVariable int id){
+        return service.getParkingBoyById(id);
+    }
+
     @PostMapping("/parkinglots")
     public ParkingLot addParkingLot(@RequestBody ParkingLot newLot){
         return service.buildParkingLot(newLot);

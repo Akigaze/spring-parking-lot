@@ -63,4 +63,15 @@ public class ParkingLotService {
             boy.getParkingLots().add(lot);
         }
     }
+
+    public ParkingBoy getParkingBoyById(int id) {
+        ParkingBoy boy=null;
+        for (ParkingBoy b:boyList){
+            if (b.getId()==id){
+                boy=b;
+                break;
+            }
+        }
+        return boy;
+    }
 }

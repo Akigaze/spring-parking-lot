@@ -17,14 +17,24 @@ public class DataBase {
         ParkingLot lot1=new ParkingLot(1,"东门停车场",3);
         ParkingLot lot2=new ParkingLot(2,"西门停车场",3);
 
+        ParkingBoy tom=new ParkingBoy(2,"Tom");
+        ParkingLot lot3=new ParkingLot(3,"北门停车场",3);
+        ParkingLot lot4=new ParkingLot(4,"南停车场",3);
+
         List<ParkingLot> jackParkingLot=new ArrayList<>();
         jackParkingLot.add(lot1);
         jackParkingLot.add(lot2);
         jack.setParkingLots(jackParkingLot);
 
-        parkingLotList.addAll(jackParkingLot);
-        boyList.add(jack);
+        List<ParkingLot> tomParkingLot=new ArrayList<>();
+        tomParkingLot.add(lot3);
+        tom.setParkingLots(tomParkingLot);
 
+        parkingLotList.addAll(jackParkingLot);
+        parkingLotList.add(lot3);
+        parkingLotList.add(lot4);
+        boyList.add(jack);
+        boyList.add(tom);
     }
 
     public static List<ParkingLot> getParkingLotList() {
