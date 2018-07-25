@@ -1,7 +1,9 @@
 package com.spring.parking.model;
 
-import java.util.List;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+@Service
 public class ParkingLot {
     private int id;
     private String name;

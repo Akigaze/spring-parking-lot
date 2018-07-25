@@ -1,9 +1,13 @@
 package com.spring.parking.model;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+@Service
 public class ParkingBoy {
     private int id;
+    @Autowired
     private List<ParkingLot> parkingLots;
 
     public ParkingBoy(int id, List<ParkingLot> parkingLots) {
