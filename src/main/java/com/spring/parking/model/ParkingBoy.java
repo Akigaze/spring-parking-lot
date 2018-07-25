@@ -7,12 +7,13 @@ import java.util.List;
 @Service
 public class ParkingBoy {
     private int id;
+    private String name;
     @Autowired
     private List<ParkingLot> parkingLots;
 
-    public ParkingBoy(int id, List<ParkingLot> parkingLots) {
+    public ParkingBoy(int id,String name) {
         this.id = id;
-        this.parkingLots = parkingLots;
+        this.name=name;
     }
 
     public ParkingBoy() {
