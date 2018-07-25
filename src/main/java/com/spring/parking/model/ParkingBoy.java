@@ -3,13 +3,14 @@ package com.spring.parking.model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ParkingBoy {
     private int id;
     private String name;
     @Autowired
-    private List<ParkingLot> parkingLots;
+    private List<ParkingLot> parkingLots=new ArrayList<>();
 
     public ParkingBoy(int id,String name) {
         this.id = id;

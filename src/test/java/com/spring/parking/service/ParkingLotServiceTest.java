@@ -28,4 +28,18 @@ public class ParkingLotServiceTest {
 
         assertThat(service.getBoyList().contains(tom),is(true));
     }
+
+    @Test
+    public void should_assign_the_specific_ParkingBoy_to_charge_a_parkinglot_when_call_assignParkingLotToParkingBoy(){
+        ParkingBoy tom=new ParkingBoy(1,"Tom");
+        ParkingLot lot=new ParkingLot(1,"东门停车场",2);
+
+        ParkingLotService service=new ParkingLotService();
+        service.buildParkingLot(lot);
+        service.hireParkingBoy(tom);
+
+        service.assignParkingLotToParkingBoy(1,1);
+
+        assertThat(tom.getParkingLots().contains(lot),is(true));
+    }
 }

@@ -48,4 +48,12 @@ public class ParkingLotService {
         boyList.add(newer);
         return newer;
     }
+
+    public void assignParkingLotToParkingBoy(int boyID, int lotID) {
+        ParkingLot lot=parkingLotList.stream().filter(l->l.getId()==lotID).findFirst().get();
+        ParkingBoy boy=boyList.stream().filter(b->b.getId()==boyID).findFirst().get();
+        if (!boy.getParkingLots().contains(lot)){
+            boy.getParkingLots().add(lot);
+        }
+    }
 }
