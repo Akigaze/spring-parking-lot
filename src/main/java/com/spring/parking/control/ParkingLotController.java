@@ -21,8 +21,18 @@ public class ParkingLotController {
         return service.getParkingLotList();
     }
 
+    @GetMapping("/parkingboys")
+    public List<ParkingBoy> showParkingBoys(){
+        return service.getBoyList();
+    }
+
     @PostMapping("/parkinglots")
     public ParkingLot addParkingLot(@RequestBody ParkingLot newLot){
         return service.buildParkingLot(newLot);
+    }
+
+    @PostMapping("/parkingboys")
+    public ParkingBoy addParkingBoy(@RequestBody ParkingBoy boy){
+        return service.hireParkingBoy(boy);
     }
 }

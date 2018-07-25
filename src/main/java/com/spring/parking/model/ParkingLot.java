@@ -3,6 +3,8 @@ package com.spring.parking.model;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class ParkingLot {
     private int id;
@@ -49,5 +51,19 @@ public class ParkingLot {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingLot that = (ParkingLot) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }
