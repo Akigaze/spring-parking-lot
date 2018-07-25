@@ -1,8 +1,7 @@
 package com.spring.parking.service;
 
 import com.spring.parking.db.DataBase;
-import com.spring.parking.model.ParkingBoy;
-import com.spring.parking.model.ParkingLot;
+import com.spring.parking.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -84,5 +83,24 @@ public class ParkingLotService {
             }
         }
         return lot;
+    }
+
+    public Receipt handleParkingRequset(Car car) {
+        boolean haveSite=false;
+        for (ParkingLot lot:parkingLotList){
+            if (!lot.full()){
+                haveSite=true;
+                break;
+            }
+        }
+        if (!haveSite){
+            return null;
+        }
+        Receipt receipt=new Receipt();
+
+        Order order=new Order(car,receipt);
+
+        DataBase.insertOrder(order);
+        return receipt;
     }
 }

@@ -1,5 +1,6 @@
 package com.spring.parking.db;
 
+import com.spring.parking.model.Order;
 import com.spring.parking.model.ParkingBoy;
 import com.spring.parking.model.ParkingLot;
 
@@ -9,10 +10,12 @@ import java.util.List;
 public class DataBase {
     private static List<ParkingLot> parkingLotList;
     private static List<ParkingBoy> boyList;
+    private static List<Order> orderList;
 
     static {
         parkingLotList=new ArrayList<>();
         boyList=new ArrayList<>();
+        orderList=new ArrayList<>();
         ParkingBoy jack=new ParkingBoy(1,"Jack");
         ParkingLot lot1=new ParkingLot(1,"东门停车场",3);
         ParkingLot lot2=new ParkingLot(2,"西门停车场",3);
@@ -45,5 +48,9 @@ public class DataBase {
 
     public static List<ParkingBoy> getBoyList() {
         return boyList;
+    }
+
+    public static void insertOrder(Order order) {
+        orderList.add(order);
     }
 }

@@ -10,7 +10,7 @@ public class Receipt {
         private String id;
 
         public Receipt() {
-            this.id = UUID.randomUUID().toString();
+            this.id = "receipt: "+UUID.randomUUID().toString();
         }
         public Receipt(String id) {
             this.id = id;

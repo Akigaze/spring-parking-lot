@@ -1,7 +1,9 @@
 package com.spring.parking.control;
 
+import com.spring.parking.model.Car;
 import com.spring.parking.model.ParkingBoy;
 import com.spring.parking.model.ParkingLot;
+import com.spring.parking.model.Receipt;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +48,10 @@ public class ParkingLotController {
     @PostMapping("/parkingboys/{boyID}/parkinglots")
     public void assignParkingLotToParkingBoy(@PathVariable int boyID,@RequestBody ParkingLot lot){
         service.assignParkingLotToParkingBoy(boyID,lot.getId());
+    }
+
+    @PostMapping("/receipts")
+    public Receipt parkingCar(@RequestBody Car car){
+        return service.handleParkingRequset(car);
     }
 }
