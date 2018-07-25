@@ -101,4 +101,15 @@ public class ParkingLotService {
     public List<Order> getOrderListByStatus(String status) {
         return DataBase.getOrderList().stream().filter(o->o.getStatus().equals(status)).collect(Collectors.toList());
     }
+
+    public List<ParkingLot> getParkingLotByBoyId(int boyID) {
+        List<ParkingLot> lotList=null;
+        for (ParkingBoy boy:DataBase.getBoyList()){
+            if (boy.getId()==boyID){
+                lotList=boy.getParkingLots();
+                break;
+            }
+        }
+        return lotList;
+    }
 }

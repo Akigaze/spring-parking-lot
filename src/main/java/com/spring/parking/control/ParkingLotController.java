@@ -52,11 +52,6 @@ public class ParkingLotController {
         return service.handleParkingRequset(car);
     }
 
-//    @GetMapping("/orders")
-//    public List<Order> getAllOrders(){
-//        return service.getOrderList();
-//    }
-
     @GetMapping("/orders")
     public List<Order> getOrders(@RequestParam(defaultValue = "") String status){
         if (status.equals("")){
@@ -64,5 +59,10 @@ public class ParkingLotController {
         }else {
             return service.getOrderListByStatus(status);
         }
+    }
+
+    @GetMapping("/parkingboys/{boyID}/parkinglots")
+    public List<ParkingLot> getParkingLotOfParkingBoy(@PathVariable int boyID){
+        return service.getParkingLotByBoyId(boyID);
     }
 }
