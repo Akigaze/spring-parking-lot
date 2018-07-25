@@ -1,0 +1,728 @@
+{
+	"info": {
+		"_postman_id": "e857c64a-241e-49fb-a6c0-d94b88da2e8f",
+		"name": "parkinglot-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "afc1ce57-9eb1-4f2c-87a7-295e19abc01e",
+			"name": "Get all parking lots",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16540cf3-be78-4401-ba40-a512114d6529",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get message all the parking lots\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"id\": 1,",
+							"        \"name\": \"东门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {}",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"name\": \"西门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {}",
+							"    },",
+							"    {",
+							"        \"id\": 3,",
+							"        \"name\": \"北门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {}",
+							"    },",
+							"    {",
+							"        \"id\": 4,",
+							"        \"name\": \"南门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {",
+							"            \"com.spring.parking.model.Receipt@3fceae4f\": {",
+							"                \"id\": 9003",
+							"            }",
+							"        }",
+							"    }",
+							"]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"id\": 4,\n                \"name\": \"南门停车场\",\n                \"capacity\": 3,\n                \"cars\": null\n            }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/parkinglots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkinglots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "4ab56442-bd24-45a7-9908-3cb0639dfbdd",
+			"name": "Get parking lot by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3247aadc-ceac-4968-bacb-1ffad19ec0fc",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get message of specific parking lot when give a parking lot id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"    \"id\": 2,",
+							"    \"name\": \"西门停车场\",",
+							"    \"capacity\": 3,",
+							"    \"cars\": {}",
+							"});",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/parkinglots/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkinglots",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "afb55ffe-989d-4c4f-aff0-b0ef4b4733f6",
+			"name": "Get all parking boys",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4da5ad2b-f23e-442a-9948-a258805e3f50",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get message all the parking boys\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"id\": 1,",
+							"        \"name\": \"Jack\",",
+							"        \"parkingLots\": [",
+							"            {",
+							"                \"id\": 1,",
+							"                \"name\": \"东门停车场\",",
+							"                \"capacity\": 3,",
+							"                \"cars\": {}",
+							"            },",
+							"            {",
+							"                \"id\": 2,",
+							"                \"name\": \"西门停车场\",",
+							"                \"capacity\": 3,",
+							"                \"cars\": {}",
+							"            }",
+							"        ]",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"name\": \"Tom\",",
+							"        \"parkingLots\": [",
+							"            {",
+							"                \"id\": 3,",
+							"                \"name\": \"北门停车场\",",
+							"                \"capacity\": 3,",
+							"                \"cars\": {}",
+							"            }",
+							"        ]",
+							"    }",
+							"]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/parkingboys",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkingboys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "5ca8a8ab-13c0-48aa-a059-0d993b8f9d8a",
+			"name": "Get parking boy by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e275f4bb-517c-4f6c-bab0-e30cc5f0639c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get message of specific parking boy when give a parking boy id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"    \"id\": 1,",
+							"    \"name\": \"Jack\",",
+							"    \"parkingLots\": [",
+							"        {",
+							"            \"id\": 1,",
+							"            \"name\": \"东门停车场\",",
+							"            \"capacity\": 3,",
+							"            \"cars\": {}",
+							"        },",
+							"        {",
+							"            \"id\": 2,",
+							"            \"name\": \"西门停车场\",",
+							"            \"capacity\": 3,",
+							"            \"cars\": {}",
+							"        }",
+							"    ]",
+							"});",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/parkingboys/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkingboys",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "3d3b575c-1127-47a2-b851-8ce67663b5f9",
+			"name": "Add parking lot",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e42c8831-0fd5-4e54-b3f2-68317978dcf1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should add a new parking lot\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 5,\n    \"name\": \"南天门停车场\",\n    \"capacity\": 3,\n    \"cars\": {}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/parkinglots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkinglots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "381aa620-42f7-4ed6-8c48-56d225b08572",
+			"name": "Add parking boy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16e34993-0ec4-4d1a-b9d4-dee0f393b127",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should add a new parking boy\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"name\": \"Amy\",\n    \"parkingLots\": []\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/parkingboys",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkingboys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "9a085b16-97e3-408f-82c3-c6e69406ef3f",
+			"name": "Assign a parking lot to parking boy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d27dcba-c5e7-4c5e-be14-e1a00d489901",
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest(\"http://localhost:8080/parkingboys/2\", function (err, response) {",
+							"    pm.test(\"Your test name\", function () {",
+							"        var jsonData = response.json();",
+							"        pm.expect(jsonData).to.eql(",
+							"            {",
+							"                \"id\": 2,",
+							"                \"name\": \"Tom\",",
+							"                \"parkingLots\": [",
+							"                    {",
+							"                        \"id\": 3,",
+							"                        \"name\": \"北门停车场\",",
+							"                        \"capacity\": 3,",
+							"                        \"cars\": {}",
+							"                    },",
+							"                    {",
+							"        \"id\": 4,",
+							"        \"name\": \"南门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {",
+							"            \"com.spring.parking.model.Receipt@3fceae4f\": {",
+							"                \"id\": 9003",
+							"            }",
+							"        }",
+							"    }",
+							"                ]",
+							"            }",
+							"        );",
+							"    });",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"name\": \"南门停车场\",\n    \"capacity\": 3,\n    \"cars\": {}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/parkingboys/2/parkinglots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkingboys",
+						"2",
+						"parkinglots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "eeac7748-4928-4c34-944e-32b09e983a99",
+			"name": "Get order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d535b21-dfc0-4385-afa9-de6107d48118",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should message of get all orders\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"id\": 1,",
+							"        \"parkedCar\": {",
+							"            \"id\": 12345",
+							"        },",
+							"        \"receipt\": {",
+							"            \"id\": \"receipt: 23456\"",
+							"        },",
+							"        \"status\": \"undeal\"",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"parkedCar\": {",
+							"            \"id\": 33333",
+							"        },",
+							"        \"receipt\": {",
+							"            \"id\": \"receipt: 00909\"",
+							"        },",
+							"        \"status\": \"undeal\"",
+							"    }",
+							"]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "9a7e7814-52d7-4c36-a2d1-fd34e972802e",
+			"name": "Get order by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3ad87b7-116b-4cb5-bcbc-32149242178f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should order message when give order id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql(",
+							"        {",
+							"    \"id\": 2,",
+							"    \"parkedCar\": {",
+							"        \"id\": 33333",
+							"    },",
+							"    \"receipt\": {",
+							"        \"id\": \"receipt: 00909\"",
+							"    },",
+							"    \"status\": \"undeal\"",
+							"});",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/orders/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "682fcc43-9061-42a0-8196-140bb8932396",
+			"name": "Get receipt when parking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8462d2c9-2cd7-42a2-bec6-b5b5bd9770c9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get a receipt when ask for parking\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"receipt\");",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":12345\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/receipts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "10b5fe74-92c2-4cd0-a080-bc8873ec03c7",
+			"name": "Get parking lots of parking boy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53734c8c-e072-4e7e-a6b4-04cd21b8fce5",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get message of parking lots managed by specific parking boy\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql([",
+							"    {",
+							"        \"id\": 1,",
+							"        \"name\": \"东门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {}",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"name\": \"西门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {}",
+							"    }",
+							"]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/parkingboys/1/parkinglots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkingboys",
+						"1",
+						"parkinglots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "988d611a-b1a4-4715-b284-f378f12d5073",
+			"name": "Parking boy process order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5aaae94-0fd5-4d95-97e2-1a2af97c7f9c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest(\"http://localhost:8080/parkingboys/1/parkinglots\", function (err, response) {",
+							"    pm.test(\"should park the car in a parking lot\", function () {",
+							"        var jsonData = response.json();",
+							"        pm.expect(jsonData).to.eql(",
+							"            [",
+							"    {",
+							"        \"id\": 1,",
+							"        \"name\": \"东门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {",
+							"            \"com.spring.parking.model.Receipt@be182f75\": {",
+							"                \"id\": 12345",
+							"            }",
+							"        }",
+							"    },",
+							"    {",
+							"        \"id\": 2,",
+							"        \"name\": \"西门停车场\",",
+							"        \"capacity\": 3,",
+							"        \"cars\": {}",
+							"    }",
+							"]",
+							"        );",
+							"    });",
+							"});",
+							"",
+							"pm.sendRequest(\"http://localhost:8080/orders/1\", function (err, response) {",
+							"    pm.test(\"should the order status become deal\", function () {",
+							"    var jsonData = response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"        \"id\": 1,",
+							"        \"parkedCar\": {",
+							"            \"id\": 12345",
+							"        },",
+							"        \"receipt\": {",
+							"            \"id\": \"receipt: 23456\"",
+							"        },",
+							"        \"status\": \"deal\"",
+							"    });",
+							"});",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"parkedCar\": {\n        \"id\": 12345\n    },\n    \"receipt\": {\n        \"id\": \"receipt: 23456\"\n    },\n    \"status\": \"undeal\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/parkingboys/1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parkingboys",
+						"1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "8d12c154-cd72-4dc7-bfbb-151d9ac9df6b",
+			"name": "Unparking car by receipt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0634199-aafe-411d-81d8-09bb4e4e16d4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"should get specific car when give a receipt\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.eql({",
+							"    \"id\": 9003",
+							"});",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/receipts/0000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"receipts",
+						"0000000"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
