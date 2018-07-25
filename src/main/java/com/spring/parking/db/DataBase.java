@@ -37,8 +37,8 @@ public class DataBase {
         boyList.add(jack);
         boyList.add(tom);
 
-        orderList.add(new Order(new Car(12345),new Receipt("receipt: 23456")));
-        orderList.add(new Order(new Car(33333),new Receipt("receipt: 00909")));
+        orderList.add(new Order(1,new Car(12345),new Receipt("receipt: 23456")));
+        orderList.add(new Order(2,new Car(33333),new Receipt("receipt: 00909")));
 
     }
 

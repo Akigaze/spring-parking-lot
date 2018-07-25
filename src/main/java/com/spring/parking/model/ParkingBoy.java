@@ -49,10 +49,10 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public Receipt park(Car car) {
+    public Receipt park(Car car,Receipt receipt) {
         for (ParkingLot lot:parkingLots){
             if (!lot.full()){
-                return lot.park(car);
+                return lot.park(car,receipt);
             }
         }
         throw new AllParkingLotsFullException();

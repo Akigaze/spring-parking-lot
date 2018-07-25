@@ -88,7 +88,7 @@ public class ParkingLotService {
         }
         Receipt receipt=new Receipt();
 
-        Order order=new Order(car,receipt);
+        Order order=new Order(DataBase.getOrderList().size()+1,car,receipt);
 
         DataBase.insertOrder(order);
         return receipt;
@@ -111,5 +111,27 @@ public class ParkingLotService {
             }
         }
         return lotList;
+    }
+
+    public boolean processOrderByParkingBoy(int boyID, Order order) {
+        Order realOrder=DataBase.getOrderList().stream().filter(o->o.getId()==order.getId()).findFirst().get();
+        ParkingBoy boy=DataBase.getBoyList().stream().filter(b->b.getId()==boyID).findFirst().get();
+        if (boy.allParkingLotsFull()){
+            return false;
+        }
+        boy.park(realOrder.getParkedCar(),realOrder.getReceipt());
+        realOrder.setStatus("deal");
+        return true;
+    }
+
+    public Order getOrderById(int orderID) {
+        Order order=null;
+        for (Order o:DataBase.getOrderList()){
+            if (o.getId()==orderID){
+                order=o;
+                break;
+            }
+        }
+        return order;
     }
 }

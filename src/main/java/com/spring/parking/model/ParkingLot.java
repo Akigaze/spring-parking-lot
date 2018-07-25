@@ -69,11 +69,10 @@ public class ParkingLot {
         return cars.size();
     }
 
-    public Receipt park(Car car) {
+    public Receipt park(Car car,Receipt receipt) {
         if (cars.size()<capacity){
-            Receipt card=new Receipt();
-            cars.put(card,car);
-            return card;
+            cars.put(receipt,car);
+            return receipt;
         }else {
             throw new ParkingLotFullException();
         }

@@ -23,6 +23,11 @@ public class Order {
         this.receipt = receipt;
     }
 
+    public Order(int id, Car car, Receipt receipt) {
+        this(car,receipt);
+        this.id=id;
+    }
+
     public int getId() {
         return id;
     }

@@ -61,8 +61,18 @@ public class ParkingLotController {
         }
     }
 
+    @GetMapping("/orders/{orderID}")
+    public Order getOrderById(@PathVariable int orderID){
+            return service.getOrderById(orderID);
+    }
+
     @GetMapping("/parkingboys/{boyID}/parkinglots")
     public List<ParkingLot> getParkingLotOfParkingBoy(@PathVariable int boyID){
         return service.getParkingLotByBoyId(boyID);
+    }
+
+    @PutMapping("/parkingboys/{boyID}/orders")
+    public boolean processOrder(@PathVariable int boyID,@RequestBody Order order){
+        return service.processOrderByParkingBoy(boyID,order);
     }
 }
