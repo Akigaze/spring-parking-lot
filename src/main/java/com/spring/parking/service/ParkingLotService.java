@@ -115,6 +115,9 @@ public class ParkingLotService {
 
     public boolean processOrderByParkingBoy(int boyID, Order order) {
         Order realOrder=DataBase.getOrderList().stream().filter(o->o.getId()==order.getId()).findFirst().get();
+        if (realOrder.getStatus()=="deal"){
+            return false;
+        }
         ParkingBoy boy=DataBase.getBoyList().stream().filter(b->b.getId()==boyID).findFirst().get();
         if (boy.allParkingLotsFull()){
             return false;
